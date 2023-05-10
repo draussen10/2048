@@ -9,8 +9,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 80vh;
-	max-height: 80vh;
+	height: 100vh;
+	max-height: 100vh;
 	overflow-y: hidden;
 }
 
