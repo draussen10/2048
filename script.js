@@ -177,32 +177,38 @@ document.addEventListener("touchend",async function(event){    // Привязк
 	const absX = Math.abs(x) > Math.abs(y);
 	const absY = Math.abs(y) > Math.abs(x);
 	if (x > 0 && absX) {
-		if(!canMoveRight()) {
-			setupInputOnce()
-			return
-		}
+		if(!canMoveRight()) {return}
 		await moveRight()
 	}
 	else if (x < 0 && absX) {
-		if(!canMoveLeft()) {
-			setupInputOnce()
-			return
-		}
+		if(!canMoveLeft()) {return}
 		await moveLeft()
 	}
 	else if (y > 0 && absY) {
-		if(!canMoveDown()) {
-			setupInputOnce()
-			return
-		}
+		if(!canMoveDown()) {return}
 		await moveDown()
 	}
 	else if (y < 0 && absY) {
-		if(!canMoveUp()) {
-			setupInputOnce()
-			return
-		}
+		if(!canMoveUp()) {return}
 		await moveUp()
 	}
-	setupInputOnce()
+
+	const newTile = new Tile(gameBoard)
+	grid.getRandomCell().linkTile(newTile)
+
+	if( !canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
+		await newTile.waitForAnimationEnd()
+		alert('Начни заново')
+		location.reload()
+	}
+
+	if(grid.cells.some(cell => {
+		if(!cell.isEmpty()) {
+			return cell.linkedTile.value === 2048
+		}
+	})) {
+		alert('Победа')
+		setTimeout(() => {location.reload()}, 1000)
+		await newTile.waitForAnimationEnd()
+	}
 })
