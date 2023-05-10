@@ -177,16 +177,32 @@ document.addEventListener("touchend",async function(event){    // Привязк
 	const absX = Math.abs(x) > Math.abs(y);
 	const absY = Math.abs(y) > Math.abs(x);
 	if (x > 0 && absX) {
+		if(!canMoveRight()) {
+			setupInputOnce()
+			return
+		}
 		await moveRight()
 	}
 	else if (x < 0 && absX) {
+		if(!canMoveLeft()) {
+			setupInputOnce()
+			return
+		}
 		await moveLeft()
 	}
 	else if (y > 0 && absY) {
+		if(!canMoveDown()) {
+			setupInputOnce()
+			return
+		}
 		await moveDown()
 	}
 	else if (y < 0 && absY) {
+		if(!canMoveUp()) {
+			setupInputOnce()
+			return
+		}
 		await moveUp()
 	}
-
+	setupInputOnce()
 })
