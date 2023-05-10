@@ -160,3 +160,33 @@ function canMoveInGroup(group) {
 		return targetCell.canAccept(cell.linkedTile)
 	})
 }
+
+let startX,startY,endX,endY;    // Определение четырех переменных для хранения значений по оси X и оси Y при касании и при выходе из касания
+document.addEventListener("touchstart",function(event){  // Связывание события слушателя при начале касания пальцем
+	startX = event.touches[0].pageX;
+	startY = event.touches[0].pageY;
+})
+
+document.addEventListener("touchend",async function(event){    // Привязка события прослушивания, когда палец касается и уходит
+	endX = event.changedTouches[0].pageX;
+	endY = event.changedTouches[0].pageY;
+
+	const x = endX - startX;
+	const y = endY - startY;
+
+	const absX = Math.abs(x) > Math.abs(y);
+	const absY = Math.abs(y) > Math.abs(x);
+	if (x > 0 && absX) {
+		await moveRight()
+	}
+	else if (x < 0 && absX) {
+		await moveLeft()
+	}
+	else if (y > 0 && absY) {
+		await moveDown()
+	}
+	else if (y < 0 && absY) {
+		await moveUp()
+	}
+
+})
