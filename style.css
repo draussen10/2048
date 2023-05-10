@@ -11,6 +11,7 @@ body {
 	justify-content: center;
 	height: 80vh;
 	max-height: 80vh;
+	overflow-y: hidden;
 }
 
 #game-board {
