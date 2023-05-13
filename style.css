@@ -80,7 +80,8 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   border-radius: 1vmin;
-  font-size: 2vmin;
+  font-size: 2.5vmin;
+  line-height: 2.5vmin;
   font-weight: bold;
   color: hsl(20, 25%, var(--text-lightness));
   transition: 100ms;
@@ -91,12 +92,12 @@ body {
 
 .tile-text {
   background-color: hsl(20, 25%, var(--bg-lightness));
-  height: 4.5vmin;
-  width: 4.5vmin;
+  height: 6vmin;
+  width: 6vmin;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 3px;
   border-radius: 50%;
 }
 
