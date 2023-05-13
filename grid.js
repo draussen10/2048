@@ -41,4 +41,13 @@ export class Grid {
       return groupedCells;
     }, []);
   }
+
+  scoreCells() {
+    return this.cells
+      .filter(cell => !cell.isEmpty())
+      .reduce((score, cell) => {
+        score += cell.linkedTile.getValue()
+        return score
+      }, 0)
+  }
 }

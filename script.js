@@ -1,11 +1,15 @@
 import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
+import { Score } from './score.js'
 
 const gameBoard = document.getElementById("game-board");
 
 const grid = new Grid(gameBoard);
+const score = new Score(grid)
+
 grid.getRandomEmptyCell().linkTile(new Tile(gameBoard));
 grid.getRandomEmptyCell().linkTile(new Tile(gameBoard));
+score.updateCurrentScore()
 setupInputOnce();
 
 
@@ -52,6 +56,8 @@ async function handleInput(event) {
 
   const newTile = new Tile(gameBoard);
   grid.getRandomEmptyCell().linkTile(newTile);
+
+  score.updateCurrentScore()
 
   if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
     await newTile.waitForAnimationEnd()
@@ -211,6 +217,7 @@ async function touchendHandler(event){    // Привязка события п�
     const newTile = new Tile(gameBoard);
     grid.getRandomEmptyCell().linkTile(newTile);
     await newTile.waitForAnimationEnd()
+    score.updateCurrentScore()
   }
 
   if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
@@ -218,5 +225,5 @@ async function touchendHandler(event){    // Привязка события п�
     location.reload()
     return;
   }
-  setupInputOnce();
+  setupInputOnce()
 }

@@ -12,13 +12,49 @@ html, body {
 body {
   background-color: #333;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  position: relative
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+#scores {
+  width: 78vmin;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#best-score, #current-score {
+  background-color: white;
+  height: 100%;
+  width: 46%;
+  border-radius: 1vmin;
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 5px;
+}
+
+.score-name {
+  width: 45%;
+  font-weight: bold;
+  color: grey;
+  font-size: 3vmin;
+}
+
+#current, #best {
+  width: 45%;
+  font-weight: bold;
+  font-size: 5vmin;
+  color: orange;
 }
 
 #game-board {
-  --cell-size: 20vmin;
+  --cell-size: 18vmin;
   --cell-gap: 2vmin;
 
   position: relative;
@@ -44,7 +80,6 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   border-radius: 1vmin;
-  font-family: Arial, sans-serif;
   font-size: 2vmin;
   font-weight: bold;
   color: hsl(20, 25%, var(--text-lightness));

@@ -45,4 +45,8 @@ export class Cell {
     this.linkedTileForMerge.removeFromDOM();
     this.unlinkTileForMerge();
   }
+
+  value() {
+    return this.linkedTile.getValue()
+  }
 }

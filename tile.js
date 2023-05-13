@@ -20,6 +20,10 @@ export class Tile {
     this.tileElement.style.setProperty('background',  `url(./static/${value}.jpg)`)
   }
 
+  getValue() {
+    return +this.value
+  }
+
   setXY(x, y) {
     this.x = x;
     this.y = y;
